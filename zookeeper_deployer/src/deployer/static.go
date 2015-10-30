@@ -53,7 +53,7 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	sort.Ints(zookeeperIndex)
 	
-	this.Entries = make([]ServerEntry, len(zookeeperIndex))
+	this.Entries = make([]ServerEntry, len(zookeeperIndex), len(zookeeperIndex))
 	
 	
 	for _, key := range zookeeperIndex {
