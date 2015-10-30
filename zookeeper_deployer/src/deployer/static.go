@@ -26,25 +26,25 @@ func NewStaticDeployer() *StaticDeployer{
 */
 func (this *StaticDeployer) BuildEntries(){
 	
-	var zookeeperIndex []int = make([]int, 0)
+	var zookeeperIndex []int = make([]int, 1)
 	
 	re := regexp.MustCompile("ADDITIONAL_ZOOKEEPER_[\\d]+$")
 	
 	for _, env := range os.Environ() {
 		
+		envKey := strings.Split(env,  "=")
 		
-		
-		if re.MatchString(env){
+		if re.MatchString(envKey){
 			re_d := regexp.MustCompile("[\\d]+$")
 			
-			i, err := strconv.Atoi(re_d.FindString(env))
+			i, err := strconv.Atoi(re_d.FindString(envKey))
 			
 			if err !=nil{
 				 fmt.Println(err)
 				 return
 				}
 			
-			fmt.Println("found",env)
+			fmt.Println("found",envKey)
 			
 			 fmt.Println(i)
 			 
