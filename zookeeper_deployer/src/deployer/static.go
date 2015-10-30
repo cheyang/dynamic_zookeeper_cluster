@@ -32,12 +32,12 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	for _, env := range os.Environ() {
 		
-		envKey := strings.Split(env,  "=")
+		envPair := strings.Split(env,  "=")
 		
-		if re.MatchString(envKey){
+		if re.MatchString(envPair[0]){
 			re_d := regexp.MustCompile("[\\d]+$")
 			
-			i, err := strconv.Atoi(re_d.FindString(envKey))
+			i, err := strconv.Atoi(re_d.FindString(envPair[0]))
 			
 			if err !=nil{
 				 fmt.Println(err)
