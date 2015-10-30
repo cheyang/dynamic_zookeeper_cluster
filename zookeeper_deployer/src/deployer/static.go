@@ -42,7 +42,7 @@ func (this *StaticDeployer) BuildEntries(){
 				 return
 				}
 			
-			append(zookeeperIndex, i)
+			zookeeperIndex = append(zookeeperIndex, i)
 				
 		}
 	}
@@ -54,7 +54,7 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	
 	for _, key := range zookeeperIndex {
-		 value := os.Getenv("ADDITIONAL_ZOOKEEPER_"+strconv.itoa(key))
+		 value := os.Getenv("ADDITIONAL_ZOOKEEPER_"+strconv.Itoa(key))
 		 
 		 append(this.Entries, ServerEntry{Entry: value})
 	}
