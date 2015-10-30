@@ -22,6 +22,8 @@ func Test_BuildEntries(t *testing.T) {
 									ServerEntry{Entry:"server.3=localhost:2888:3888"},
 									ServerEntry{Entry:"server.4s=localhost:2888:3888"}}
 		
+		fmt.Println(deployer.Entries) 
+		
 		if to_compare != deployer.Entries {
 			
 			t.Error("Build Entries failed")
