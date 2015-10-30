@@ -32,6 +32,8 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	for _, env := range os.Environ() {
 		
+		fmt.Println(env)
+		
 		if re.MatchString(env){
 			re_d := regexp.MustCompile("[\\d]+$")
 			
