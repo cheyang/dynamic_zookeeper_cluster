@@ -55,7 +55,7 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	fmt.Println(len(zookeeperIndex))
 	
-	this.Entries = make([]ServerEntry, 0)
+	this.Entries = make([]ServerEntry, 4)
 	
 	
 	for _, key := range zookeeperIndex {
