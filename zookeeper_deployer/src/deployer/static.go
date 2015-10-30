@@ -44,11 +44,6 @@ func (this *StaticDeployer) BuildEntries(){
 				 return
 				}
 			
-			fmt.Println("found",envPair)
-			
-			 fmt.Println(i)
-			 
-			  fmt.Println(zookeeperIndex)
 			
 			zookeeperIndex = append(zookeeperIndex, i)
 				
@@ -57,8 +52,6 @@ func (this *StaticDeployer) BuildEntries(){
 		
 	
 	sort.Ints(zookeeperIndex)
-	
-	fmt.Println(zookeeperIndex)
 	
 	this.Entries = make([]ServerEntry, len(zookeeperIndex))
 	
@@ -71,7 +64,6 @@ func (this *StaticDeployer) BuildEntries(){
 		 this.Entries= append(this.Entries, ServerEntry{Entry: value})
 	}
 	
-	fmt.Println(this.Entries)
 }
 
 func (this *StaticDeployer) GenerateTemplate(){
