@@ -54,11 +54,11 @@ func (this *StaticDeployer) BuildEntries(){
 				
 		}
 	}
-	
-	
-	
+		
 	
 	sort.Ints(zookeeperIndex)
+	
+	fmt.Println(zookeeperIndex)
 	
 	this.Entries = make([]ServerEntry, len(zookeeperIndex))
 	
