@@ -17,7 +17,7 @@ type StaticDeployer struct{
 func NewStaticDeployer() *StaticDeployer{
 	
 	
-	return &StaticDeployer{Entries: nil}
+	return &StaticDeployer{Deployer{Entries: nil}}
 	
 }
 
