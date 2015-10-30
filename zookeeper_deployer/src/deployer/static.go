@@ -56,6 +56,8 @@ func (this *StaticDeployer) BuildEntries(){
 	for _, key := range zookeeperIndex {
 		 value := os.Getenv("ADDITIONAL_ZOOKEEPER_"+strconv.Itoa(key))
 		 
+		 fmt.Println(value)
+		 
 		 this.Entries= append(this.Entries, ServerEntry{Entry: value})
 	}
 	
