@@ -30,6 +30,6 @@ func Test_BuildEntries(t *testing.T) {
 			t.Error("Build Entries failed")
 		}
 		*/
-		//fmt.Println(to_compare) 
+		fmt.Println(to_compare) 
 }
 
