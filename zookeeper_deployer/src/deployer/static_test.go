@@ -22,5 +22,7 @@ func Test_BuildEntries(t *testing.T) {
 									ServerEntry{Entry:"server.4s=localhost:2888:3888"}}
 		
 		fmt.Println(deployer.Entries) 
+		
+		fmt.Println(to_compare) 
 }
 
