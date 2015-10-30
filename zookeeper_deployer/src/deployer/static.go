@@ -59,6 +59,7 @@ func (this *StaticDeployer) BuildEntries(){
 		 this.Entries= append(this.Entries, ServerEntry{Entry: value})
 	}
 	
+	fmt.Println(this.Entries)
 }
 
 func (this *StaticDeployer) GenerateTemplate(){
