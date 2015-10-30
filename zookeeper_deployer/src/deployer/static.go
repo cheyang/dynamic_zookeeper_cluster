@@ -44,7 +44,7 @@ func (this *StaticDeployer) BuildEntries(){
 				 return
 				}
 			
-			fmt.Println("found",envKey)
+			fmt.Println("found",envPair)
 			
 			 fmt.Println(i)
 			 
