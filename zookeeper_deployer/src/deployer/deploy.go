@@ -31,7 +31,7 @@ func (this *Deployer) Deploy(){
 	this.GenerateTemplate()
 }
 
-
+/**
 func Deploy(deployType string){
 	
 	var deployer Deployer
@@ -42,3 +42,4 @@ func Deploy(deployType string){
 			
 	}
 }
+*/

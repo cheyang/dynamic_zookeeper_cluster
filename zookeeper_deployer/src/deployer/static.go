@@ -3,7 +3,8 @@ package deployer
 import (
 	"os"
 	"regexp"
-	"strings"
+//	"strings"
+	"strconv"
 	"sort"
 	"fmt"
 )
@@ -16,7 +17,7 @@ type StaticDeployer struct{
 func NewStaticDeployer() *StaticDeployer{
 	
 	
-	return &StaticDeployer{entries: nil}
+	return &StaticDeployer{Entries: nil}
 	
 }
 
@@ -25,7 +26,7 @@ func NewStaticDeployer() *StaticDeployer{
 */
 func (this *StaticDeployer) BuildEntries(){
 	
-	var zookeeperIndex []int = make([]int, len(os.Environ))
+	var zookeeperIndex []int = make([]int, len(os.Environ()))
 	
 	re := regexp.MustCompile("ADDITIONAL_ZOOKEEPER_[\\d]+$")
 	
@@ -53,9 +54,9 @@ func (this *StaticDeployer) BuildEntries(){
 	
 	
 	for _, key := range zookeeperIndex {
-		 value = os.Getenv("ADDITIONAL_ZOOKEEPER_"+strconv.itoa(key))
+		 value := os.Getenv("ADDITIONAL_ZOOKEEPER_"+strconv.itoa(key))
 		 
-		 append(this.Entries, ServerEntry{entry: value})
+		 append(this.Entries, ServerEntry{Entry: value})
 	}
 	
 }
