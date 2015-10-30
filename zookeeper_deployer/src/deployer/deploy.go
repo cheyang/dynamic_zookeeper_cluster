@@ -1,7 +1,6 @@
 package deployer
 
 import (
-	"strings"
 )
 
 const (
@@ -10,9 +9,7 @@ const (
 )
 
 type ServerEntry struct{
-	Entry 
-	PeerUrl 
-	Role string
+	Entry, 	PeerUrl, Role string
 	ClientPort int	
 }
 
