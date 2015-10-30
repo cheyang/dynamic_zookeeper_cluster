@@ -10,9 +10,9 @@ const (
 )
 
 type ServerEntry struct{
-	Entry string,
-	PeerUrl string,
-	Role string,
+	Entry 
+	PeerUrl 
+	Role string
 	ClientPort int	
 }
 
