@@ -42,6 +42,10 @@ func (this *StaticDeployer) BuildEntries(){
 				 return
 				}
 			
+			 fmt.Println(i)
+			 
+			  fmt.Println(zookeeperIndex)
+			
 			zookeeperIndex = append(zookeeperIndex, i)
 				
 		}
