@@ -26,7 +26,7 @@ func NewStaticDeployer() *StaticDeployer{
 */
 func (this *StaticDeployer) BuildEntries(){
 	
-	var zookeeperIndex []int = make([]int, 0)
+	var zookeeperIndex []int = make([]int, 0, len(os.Environ()))
 	
 	re := regexp.MustCompile("ADDITIONAL_ZOOKEEPER_[\\d]+$")
 	
@@ -68,11 +68,5 @@ func (this *StaticDeployer) BuildEntries(){
 	
 }
 
-func (this *StaticDeployer) GenerateTemplate(){
-	
-}
 
-func (this *StaticDeployer) Deploy(){
-	
-}
 
