@@ -3,9 +3,12 @@ package deployer
 import (
     "testing"
     "fmt"
+    "os"
 )
 
 func Test_ImportExistingServerEntries(t *testing.T) {
+	
+	os.Setenv(ZK_LEADER_URL, "localhost:2181")
 	
 	deployer := NewDynmaicDeployer("12")
 
