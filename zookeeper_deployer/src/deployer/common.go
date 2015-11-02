@@ -16,7 +16,7 @@ func Exec(cmd string, args []string) (output string, err error){
 	
 //	command := exec.Command(cmd, args...)
 
-    command := exec.Command("/bin/sh", "-c", to_exec_cmd)
+    command := exec.Command("/bin/sh", "-c", cmd, args...)
 	
 	
 	w := bytes.NewBuffer(nil)
