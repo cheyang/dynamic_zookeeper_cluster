@@ -67,7 +67,15 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 
     args := []string {"-server", os.Getenv(ZK_LEADER_URL),  "get /zookeeper/config|grep ^server" }
 
-	out, err := exec.Command(cmd, args...).Output()
+	command := exec.Command(cmd, args...)
+	
+	w := bytes.NewBuffer(nil)
+    command.Stderr = w
+    if err := command.Run(); err != nil {
+        command.Printf("Run returns: %s\n", err)
+    }
+    
+    fmt.Printf("Stderr: %s\n", string(w.Bytes()))
 	
 	return err
 	
