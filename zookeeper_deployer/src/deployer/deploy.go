@@ -2,7 +2,6 @@ package deployer
 
 import (
 	"fmt"
-	"strconv"
 	"os"
 )
 
@@ -100,7 +99,7 @@ func (this *Deployer) CreateMyID() error{
 		return err
 	}
 	
-	defer file.close()
+	defer file.Close()
 	
 	myid := os.Getenv(MYID)
 	

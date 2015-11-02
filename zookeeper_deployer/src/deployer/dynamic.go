@@ -24,7 +24,7 @@ type DynamicDeployer struct{
 }
 
 
-func NewDynmaicDeployer(myid string){
+func NewDynmaicDeployer(myid string) *DynamicDeployer{
 	
 	return &DynamicDeployer{Deployer{Entries: make([]ServerEntry, 0, DEFAULT_CLUSTER_SIZE), MyID: myid}}
 }
