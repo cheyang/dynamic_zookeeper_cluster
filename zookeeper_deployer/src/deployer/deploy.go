@@ -4,30 +4,36 @@ import (
 	"io"
 	"fmt"
 	"strconv"
-	"os/exec"
+	"os"
 )
 
 const (
 	PARTICIPANT = "participant"
 	OBSERVER = "observer"
 	MYID_FILE = "/tmp/zookeeper/myid"
+	MYID_DIR ="/tmp/zookeeper"
 	MYID = "MYID"
+	ZK_DIR = "/opt/zookeeper"
+	ZK_CLI = ZKR_DIR + "/bin/zkCli.sh"
+	ZK_DYNAMIC_CONF = "/opt/zookeeper/conf/zoo.cfg.dynamic"
 )
 
 type ServerEntry struct{
-	Entry, 	PeerUrl, Role string
-	ClientPort int	
+	Entry string
 }
 
 type Deployer struct{
 	Entries []ServerEntry
+	MyID string
 }
 
 func (this *Deployer) BuildEntries(){
 	
 }
 
-func (this *Deployer) GenerateTemplate(dynamicFile string) error {
+func (this *Deployer) GenerateTemplate() error {
+	
+	dynamicFile := os.Getenv()
 	
 	file, err := os.Create(dynamicFile)
 	
@@ -53,6 +59,14 @@ func (this *Deployer) GenerateTemplate(dynamicFile string) error {
 
 func (this *Deployer) Deploy(dynamicFile string){
 	
+	err := this.CreateMyID()
+	
+	if err != nil{
+		fmt.Println(err)
+		
+		return
+	}
+	
 	
 	this.BuildEntries()
 	
@@ -67,10 +81,19 @@ func (this *Deployer) Deploy(dynamicFile string){
 }
 
 func (this *Deployer) CreateMyID() error{
-	if _, err := os.Stat(MYID_FILE); err == nil{
+	if _, err := os.Stat(MYID_FILE);  os.IsExist(err){
 		fmt.Printf("file exists; returning...")
 		return nil
 	}
+	
+	mydir, err := os.Stat(MYID_DIR)
+	
+	if err != nil{
+		if !mydir.IsDir() {
+			os.MkdirAll(mydir, 0775)
+		}
+	}
+	
 	
 	file, err := os.Create(MYID_FILE)
 	

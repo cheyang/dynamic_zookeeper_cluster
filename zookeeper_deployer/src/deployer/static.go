@@ -14,10 +14,10 @@ type StaticDeployer struct{
 }
 
 
-func NewStaticDeployer() *StaticDeployer{
+func NewStaticDeployer(myid string) *StaticDeployer{
 	
 	
-	return &StaticDeployer{Deployer{Entries: nil}}
+	return &StaticDeployer{Deployer{Entries: nil, MyID: myid}}
 	
 }
 
