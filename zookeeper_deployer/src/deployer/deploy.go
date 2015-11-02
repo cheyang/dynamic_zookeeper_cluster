@@ -13,7 +13,7 @@ const (
 	MYID_DIR ="/tmp/zookeeper"
 	MYID = "MYID"
 	ZK_DIR = "/opt/zookeeper"
-	ZK_CLI = ZKR_DIR + "/bin/zkCli.sh"
+	ZK_CLI = ZK_DIR + "/bin/zkCli.sh"
 	ZK_DYNAMIC_CONF = "/opt/zookeeper/conf/zoo.cfg.dynamic"
 )
 
@@ -32,7 +32,7 @@ func (this *Deployer) BuildEntries(){
 
 func (this *Deployer) GenerateTemplate() error {
 	
-	dynamicFile := os.Getenv()
+	dynamicFile := ZK_DYNAMIC_CONF
 	
 	file, err := os.Create(dynamicFile)
 	
@@ -41,16 +41,14 @@ func (this *Deployer) GenerateTemplate() error {
 		return err
 	}
 	
-	defer file.close()
+	defer file.Close()
 	
 	
 	for _, entry := range this.Entries{
 		
-		if entry.Entry != nil{
+		
 			file.WriteString(entry.Entry+"\n")
-		}else{
-			file.WriteString(entry.PeerUrl+":"+PARTICIPANT+";0.0.0.0:"+strconv.Itoa(entry.PeerUrl)+"\n")
-		}
+		
 	}
 	
 	return nil
