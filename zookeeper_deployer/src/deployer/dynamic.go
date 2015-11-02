@@ -70,7 +70,7 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	
 	
 	for _, entry := range entries {
-		append(this.Entries, ServerEntry{entry})
+		this.Entries = append(this.Entries, ServerEntry{entry})
 	}
 	
 	return nil
