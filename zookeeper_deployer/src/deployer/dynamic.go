@@ -2,11 +2,9 @@ package deployer
 
 import (
 	"os"
-	"os/exec"
 	"log"
 	"strings"
 	"fmt"
-	"bytes"
 )
 
 const (

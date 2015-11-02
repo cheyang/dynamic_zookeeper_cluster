@@ -2,7 +2,7 @@ package deployer
 
 import (
 	"os/exec"
-	
+	"bytes"
 	"fmt"
 )
 
