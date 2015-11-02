@@ -10,7 +10,7 @@ import (
 
 func Exec(cmd string, args []string) (output string, err error){
 	
-	to_exec_cmd := cmd + " " + strings.Join(args, " ")
+	to_exec_cmd := "`"+cmd + " " + strings.Join(args, " ")+"`"
 	
 	fmt.Println(to_exec_cmd)
 	
