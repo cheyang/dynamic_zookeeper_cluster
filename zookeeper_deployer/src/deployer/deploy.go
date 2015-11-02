@@ -87,7 +87,7 @@ func (this *Deployer) CreateMyID() error{
 	
 	if err != nil{
 		if !mydir.IsDir() {
-			os.MkdirAll(mydir, 0775)
+			os.MkdirAll(MYID_DIR, 0775)
 		}
 	}
 	

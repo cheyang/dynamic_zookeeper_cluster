@@ -40,20 +40,20 @@ func (this *DynamicDeployer) BuildEntries(){
 	
 	My_zk_peer_url = os.Getenv(MY_ZK_PEER_URL)
 	
-	if My_zk_peer_url == nil{
+	if My_zk_peer_url == ""{
 		log.Fatal("Please set the environment "+ MY_ZK_PEER_URL +" before running container")
 	}
 	
 	
 	My_client_port = os.Getenv(MY_CLIENT_PORT)
 	
-	if My_client_port == nil{
+	if My_client_port == ""{
 		log.Fatal("Please set the environment "+ MY_CLIENT_PORT +" before running container")
 	}
 	
 	My_id = os.Getenv(MYID)
 	
-	if My_id == nil{
+	if My_id == ""{
 		log.Fatal("Please set the environment "+ MYID +" before running container")
 	}
 	
