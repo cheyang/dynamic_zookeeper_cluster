@@ -28,12 +28,13 @@ func Exec(cmd string, args []string) (output string, err error){
     
     if err = command.Run(); err != nil {
         fmt.Printf("Run returns: %s\n", err)
+        fmt.Printf("Stderr: %s\n", string(w.Bytes()))
         return output, err
     }
     
-    fmt.Printf("Stderr: %s\n", string(w.Bytes()))
     
-    output = string(w.Bytes())
+    
+    output = string(w1.Bytes())
 
 	return output, err
 }
