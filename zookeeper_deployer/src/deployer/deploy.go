@@ -45,7 +45,7 @@ func (this *Deployer) GenerateTemplate() error {
 	defer file.close()
 	
 	
-	for _, entry range this.Entries{
+	for _, entry := range this.Entries{
 		
 		if entry.Entry != nil{
 			file.WriteString(entry.Entry+"\n")
