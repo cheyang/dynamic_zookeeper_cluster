@@ -65,7 +65,7 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	cmd := []string {ZK_CLI, "-server", os.Getenv(ZK_LEADER_URL),  "get /zookeeper/config|grep ^server" }
 	
 //	cmd := ZK_CLI + " -server " + os.Getenv(ZK_LEADER_URL) + " get /zookeeper/config|grep ^server"
-	out, err := exec.Command(cmd).Output()
+	out, err := exec.Command(cmd...).Output()
 	
 	return err
 	
