@@ -29,9 +29,9 @@ func (this *Deployer) BuildEntries(){
 	
 }
 
-func (this *Deployer) GenerateTemplate() error {
+func (this *Deployer) GenerateTemplate(dynamicFile string) error {
 	
-	dynamicFile := ZK_DYNAMIC_CONF
+	
 	
 	file, err := os.Create(dynamicFile)
 	
