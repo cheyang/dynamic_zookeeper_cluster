@@ -32,9 +32,11 @@ func Exec(cmd string, args []string) (output string, err error){
         return output, err
     }
     
-    
+     
     
     output = string(w1.Bytes())
+    
+    fmt.Println(output)
 
 	return output, err
 }
