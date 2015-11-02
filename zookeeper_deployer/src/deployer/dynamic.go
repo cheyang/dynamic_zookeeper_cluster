@@ -51,12 +51,6 @@ func (this *DynamicDeployer) BuildEntries(){
 		log.Fatal("Please set the environment "+ MY_CLIENT_PORT +" before running container")
 	}
 	
-	My_id = os.Getenv(MYID)
-	
-	if My_id == ""{
-		log.Fatal("Please set the environment "+ MYID +" before running container")
-	}
-	
 	
 	entry_value := "server."+this.MyID+"="+My_zk_peer_url+":observer;"+My_client_port
 	
