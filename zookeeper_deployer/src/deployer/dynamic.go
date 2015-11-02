@@ -65,6 +65,11 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	
 	
 	cmd := ZK_CLI
+	
+	if os.Getenv(ZK_LEADER_URL) == ""{
+		return errors.New("Please set the environment "+ ZK_LEADER_URL +" before running container")
+	}
+	
 
     args := []string {"-server", os.Getenv(ZK_LEADER_URL),  "get /zookeeper/config|grep ^server" }
 
