@@ -10,13 +10,13 @@ import (
 
 func Exec(cmd string, args []string) (output string, err error){
 	
-	to_exec_cmd := "'"+cmd + " " + strings.Join(args, " ")+"'"
+	to_exec_cmd := cmd + " " + strings.Join(args, " ")
 	
 	fmt.Println(to_exec_cmd)
 	
 //	command := exec.Command(cmd, args...)
 
-    command := exec.Command("/bin/sh", "-c", cmd, args...)
+    command := exec.Command("/bin/sh", "-c", to_exec_cmd)
 	
 	
 	w := bytes.NewBuffer(nil)
