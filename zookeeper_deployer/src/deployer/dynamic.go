@@ -70,6 +70,8 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 
 	command := exec.Command(cmd, args...)
 	
+	var err error
+	
 	w := bytes.NewBuffer(nil)
     command.Stderr = w
     
@@ -77,7 +79,7 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
     
     command.Stdout = w1
     
-    if err := command.Run(); err != nil {
+    if err = command.Run(); err != nil {
         fmt.Printf("Run returns: %s\n", err)
     }
     
