@@ -34,7 +34,7 @@ func Exec(cmd string, args []string) (output string, err error){
     
     output = string(w1.Bytes())
     
-    fmt.Println(output)
+//    fmt.Println(output)
 
 	return output, err
 }

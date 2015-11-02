@@ -74,7 +74,9 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 
 	out, err := Exec(cmd, args)
     	
-	return err
+	if err != nil{
+		return err
+	}
 	
 	fmt.Println(out)
 	
