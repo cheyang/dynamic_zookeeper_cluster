@@ -11,7 +11,6 @@ const (
 	MY_ZK_PEER_URL = "MY_ZK_PEER_URL"
 	MY_CLIENT_PORT = "MY_CLIENT_PORT"
 	ZK_LEADER_URL = "ZK_LEADER_URL"
-	ZK_DYNAMIC_CONF = "/opt/zookeeper/conf/zoo.cfg.dynamic"
 	DEFAULT_CLUSTER_SIZE = 20
 	
 )
@@ -73,10 +72,10 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	
 	return err
 	
-	entries := strings.split(out, "\n")
+	entries := strings.Split(out, "\n")
 	
 	
-	for _, entry range entries {
+	for _, entry := range entries {
 		append(this.Entries, ServerEntry{entry})
 	}
 	

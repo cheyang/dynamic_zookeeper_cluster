@@ -1,7 +1,6 @@
 package deployer
 
 import (
-	"io"
 	"fmt"
 	"strconv"
 	"os"
