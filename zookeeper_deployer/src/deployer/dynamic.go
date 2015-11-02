@@ -5,6 +5,7 @@ import (
 	"log"
 	"strings"
 	"fmt"
+	"errors"
 )
 
 const (
@@ -71,7 +72,7 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 
     args := []string {"-server", os.Getenv(ZK_LEADER_URL),  "get /zookeeper/config|grep ^server" }
 
-	output, err := Exec(cmd, args)
+	out, err := Exec(cmd, args)
     	
 	return err
 	
