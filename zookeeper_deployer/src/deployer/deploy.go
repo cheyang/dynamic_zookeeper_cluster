@@ -70,7 +70,7 @@ func (this *Deployer) Deploy(dynamicFile string){
 	
 	this.BuildEntries()
 	
-	err := this.GenerateTemplate(dynamicFile)
+	err = this.GenerateTemplate(dynamicFile)
 	
 	if err != nil{
 		fmt.Println(err)
