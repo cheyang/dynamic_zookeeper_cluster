@@ -55,18 +55,18 @@ func (this *DynamicDeployer) BuildEntries(){
 	entry_value := "server."+this.MyID+"="+My_zk_peer_url+":observer;"+My_client_port
 	
 	
-	this.Entries = append(this.Entries, entry_value)
+	this.Entries = append(this.Entries, ServerEntry{entry_value})
 	}
 
 
 func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	
-	cmd := ZOOKEEPER_CLI + " -server " + os.Getenv(ZK_LEADER_URL) + " get /zookeeper/config|grep ^server"
+	cmd := ZK_CLI + " -server " + os.Getenv(ZK_LEADER_URL) + " get /zookeeper/config|grep ^server"
 	out, err := exec.Command(cmd).Output()
 	
 	return err
 	
-	entries := strings.Split(out, "\n")
+	entries := strings.Split(string(out), "\n")
 	
 	
 	for _, entry := range entries {

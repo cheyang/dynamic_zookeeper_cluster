@@ -12,7 +12,7 @@ func Test_BuildEntries(t *testing.T) {
 		os.Setenv("ADDITIONAL_ZOOKEEPER_3", "server.3=localhost:2888:3888" )
 		os.Setenv("ADDITIONAL_ZOOKEEPER_2", "server.2=localhost:2888:3888" )
 		
-		deployer := NewStaticDeployer()
+		deployer := NewStaticDeployer("1")
 		
 		deployer.BuildEntries()
 		
