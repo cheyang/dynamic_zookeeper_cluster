@@ -10,7 +10,6 @@ import (
 func Exec(cmd string, args []string) (output string, err error){
 	command := exec.Command(cmd, args...)
 	
-	var err error
 	
 	w := bytes.NewBuffer(nil)
     command.Stderr = w
@@ -28,5 +27,5 @@ func Exec(cmd string, args []string) (output string, err error){
     
     output = string(w.Bytes())
 
-	return
+	return output, err
 }
