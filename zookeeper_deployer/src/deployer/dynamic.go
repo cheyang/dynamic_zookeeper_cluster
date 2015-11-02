@@ -78,7 +78,7 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
     command.Stdout = w1
     
     if err := command.Run(); err != nil {
-        command.Printf("Run returns: %s\n", err)
+        fmt.Printf("Run returns: %s\n", err)
     }
     
     fmt.Printf("Stderr: %s\n", string(w.Bytes()))
