@@ -5,6 +5,7 @@ import (
 	"os/exec"
 	"log"
 	"strings"
+	
 )
 
 const (
@@ -65,6 +66,8 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
 	out, err := exec.Command(cmd).Output()
 	
 	return err
+	
+	log.Println(string(out))
 	
 	entries := strings.Split(string(out), "\n")
 	
