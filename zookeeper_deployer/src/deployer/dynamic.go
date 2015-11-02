@@ -76,9 +76,10 @@ func (this *DynamicDeployer) ImportExistingServerEntries() error{
     	
 	return err
 	
-	fmt.Println(string(out))
+	fmt.Println(out)
 	
-	entries := strings.Split(string(out), "\n")
+	entries := strings.Split(out, "\n")
+	
 	
 	
 	for _, entry := range entries {
