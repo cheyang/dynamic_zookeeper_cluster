@@ -12,5 +12,8 @@ RUN wget -q -O - http://apache.arvixe.com/zookeeper/zookeeper-3.5.1-alpha/zookee
 RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg
 RUN echo "standaloneEnabled=false" >> /opt/zookeeper/conf/zoo.cfg
 RUN echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg
+
+ADD dynamic_deployment.sh /usr/local/bin/
+ADD static_deployment.sh /usr/local/bin/
 ADD run.sh /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/run.sh"]
