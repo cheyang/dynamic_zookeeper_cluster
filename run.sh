@@ -1,24 +1,18 @@
-#!/bin/sh
+#!/bin/bash
+#env:
+#export DEPLOY_MODE=STATIC or DEPLOY_MODE=DYNAMIC
+#export ADDITIONAL_ZOOKEEPER_1=server.1=192.168.94.135:2888:3888:observer;2181
+#export MYID=6
+#export PORT=2888:3888
+#export CLIENT_PORT=2181
+#export ZK=192.168.1.1
+#export MYSERVER_URL=192.168.2.2:2888:3888
 
-# Output server ID
-echo "server id (myid): ${SERVER_ID}"
-echo "${SERVER_ID}" > /tmp/zookeeper/myid
-
-HOSTNAME=`hostname`
-IPADDRESS=`ip -4 addr show scope global dev eth0 | grep inet | awk '{print \$2}' | cut -d / -f 1`
-cd /opt/zookeeper
- 
-if [ -n "$ZK_URL" ]
-then
-  set -o pipefail;/opt/zookeeper/bin/zkCli.sh -server $ZK_URL get /zookeeper/config|grep ^server`
-  echo "`set -o pipefail;/opt/zookeeper/bin/zkCli.sh -server $ZK_URL get /zookeeper/config|grep ^server`" >> /opt/zookeeper/conf/zoo.cfg.dynamic
-  echo "server.$SERVER_ID=$ZK_PEER_URL:observer;$CLIENT_PORT" >> /opt/zookeeper/conf/zoo.cfg.dynamic
-  cp /opt/zookeeper/conf/zoo.cfg.dynamic /opt/zookeeper/conf/zoo.cfg.dynamic.org
-  ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' /opt/zookeeper/bin/zkServer.sh start
-  /opt/zookeeper/bin/zkCli.sh -server $ZK_URL reconfig -add "server.$SERVER_ID=$ZK_PEER_URL:participant;$CLIENT_PORT"
-  /opt/zookeeper/bin/zkServer.sh stop
-  ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' /opt/zookeeper/bin/zkServer.sh start-foreground  
+if [ $DEPLOY_MODE = STATIC ] ; then  
+   sh static_deployment.sh
+elif [ $STATUS = DYNAMIC ]; then  
+   sh dynamic_deployment.sh 
 else
-  echo "server.$MYID=$ZK_PEER_URL:participant;$CLIENT_PORT" >> /opt/zookeeper/conf/zoo.cfg.dynamic
-  ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' /opt/zookeeper/bin/zkServer.sh start-foreground
+   echo "The environment variable DEPLOY_MODE does not exist or is not correct."
+   exit
 fi
