@@ -8,11 +8,15 @@
 #export ZK=192.168.1.1
 #export MYSERVER_URL=192.168.2.2:2888:3888
 
-if [ $DEPLOY_MODE = STATIC ] ; then  
-   sh static_deployment.sh
-elif [ $STATUS = DYNAMIC ]; then  
-   sh dynamic_deployment.sh 
-else
+if [ x$DEPLOY_MODE = x ] ; then
    echo "The environment variable DEPLOY_MODE does not exist or is not correct."
+   exit
+fi
+if [ $DEPLOY_MODE = STATIC ] ; then
+    static_deployment.sh
+elif [ $DEPLOY_MODE = DYNAMIC ]; then
+    dynamic_deployment.sh
+else
+   echo "The environment variable DEPLOY_MODE does not correct."
    exit
 fi
