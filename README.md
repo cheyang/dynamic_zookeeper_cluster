@@ -1,6 +1,6 @@
 ## dynamic_zookeeper_cluster
 - Instructions:  
-    A ZooKeeper docker image built on **ZooKeeper 3.5.1-alpha**  supports both static and dynamic cluster
+    A ZooKeeper docker image built on **ZooKeeper 3.5.1-alpha**  supports both static and [dynamic configuration](http://zookeeper.apache.org/doc/trunk/zookeeperReconfig.html)
     The docker image supports the following ZooKeeper modes:
        - **STATIC mode**
        - **DYNAMIC mode**
@@ -22,7 +22,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
 |:---------|:-------------|:-----------:|
 |MYID| 	The id of the server|MYID=1|
 |ADDITIONAL_ZOOKEEPER| 	Zookeeper service USES the IP and port|ADDITIONAL_ZOOKEEPER_1=server.1=  localhost:2888:3888:participant\;2181|
-|DEPLOY_MODE|Create a zookeeper mode|DEPLOY_MODE=STATIC|
+|CONFIG_MODE|Create a zookeeper mode|CONFIG_MODE=STATIC|
    - Start ZooKeeper Cluster with 3 docker containers  
     container zk1 is listening on localhost: 2181£¬2888£¬3888  
     container zk2 is listening on localhost: 2182£¬2889£¬3889  
@@ -35,7 +35,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
     -e ADDITIONAL_ZOOKEEPER_1=server.1=localhost:2888:3888:participant\;2181 \
     -e ADDITIONAL_ZOOKEEPER_2=server.2=localhost:2889:3889:participant\;2182 \
     -e ADDITIONAL_ZOOKEEPER_3=server.3=localhost:2890:3890:participant\;2183 \
-    -e DEPLOY_MODE=STATIC   \
+    -e CONFIG_MODE=STATIC   \
     -e MYID=1  \
     zookeeper
 
@@ -46,7 +46,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
    -e ADDITIONAL_ZOOKEEPER_1=server.1=localhost:2888:3888:participant\;2181 \
    -e ADDITIONAL_ZOOKEEPER_2=server.2=localhost:2889:3889:participant\;2182 \
    -e ADDITIONAL_ZOOKEEPER_3=server.3=localhost:2890:3890:participant\;2183 \
-   -e DEPLOY_MODE=STATIC  \
+   -e CONFIG_MODE=STATIC  \
     -e MYID=2 \
     zookeeper 
     
@@ -57,7 +57,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
     -e ADDITIONAL_ZOOKEEPER_1=server.1=localhost:2888:3888:participant\;2181 \
     -e ADDITIONAL_ZOOKEEPER_2=server.2=localhost:2889:3889:participant\;2182 \
     -e ADDITIONAL_ZOOKEEPER_3=server.3=localhost:2890:3890:participant\;2183 \
-    -e DEPLOY_MODE=STATIC  \
+    -e CONFIG_MODE=STATIC  \
     -e MYID=3 \
     zookeeper 
     ```
@@ -129,7 +129,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
 |ZK_URL| 	The id of the server|MYID=1|
 |MYSERVER_URL|Zookeeper service using IP and port|MYSERVER_URL=localhost:2891:3891|
 |MYCLIENT_PORT|Clients use port|MYCLIENT_PORT=2184|
-|DEPLOY_MODE|Create a zookeeper mode|DEPLOY_MODE=DYNAMIC|
+|CONFIG_MODE|Create a zookeeper mode|CONFIG_MODE=DYNAMIC|
 |MYID|The id of the server|MYID=4|
    -  Start ZooKeeper Cluster with 2 docker containers  
     container zk4 is listening on localhost: 2184£¬2891£¬3891  
@@ -142,7 +142,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
    -e ZK_URL=127.0.0.1:2181 \(Known cluster of any member of the IP and port)
    -e MYSERVER_URL=localhost:2891:3891 \
    -e MYCLIENT_PORT=2184 \
-   -e DEPLOY_MODE=DYNAMIC  \
+   -e CONFIG_MODE=DYNAMIC  \
    -e MYID=4 \
    zookeeper
     
@@ -152,7 +152,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
    -v /data/zk5:/tmp/zookeeper \
    -e MYSERVER_URL=localhost:2892:3892 \
    -e MYCLIENT_PORT=2185 \
-   -e DEPLOY_MODE=DYNAMIC  \
+   -e CONFIG_MODE=DYNAMIC  \
    -e MYID=5 \
    zookeeper
    ```
