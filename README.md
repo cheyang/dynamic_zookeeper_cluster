@@ -126,7 +126,7 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
    
 |Environment Variable|Description|example|
 |:-----------|:---------------|:------------------ |
-|ZK_URL| 	The id of the server|MYID=1|
+|ZK_URL| 	The url of one of  the zookeeper cluster|localhost:2181|
 |MYSERVER_URL|Zookeeper service using IP and port|MYSERVER_URL=localhost:2891:3891|
 |MYCLIENT_PORT|Clients use port|MYCLIENT_PORT=2184|
 |CONFIG_MODE|Create a zookeeper mode|CONFIG_MODE=DYNAMIC|
