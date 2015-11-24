@@ -11,4 +11,6 @@ RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
 
 ADD . /usr/local/bin/
 
+RUN chmod 0755 /usr/local/bin/*.sh
+
 ENTRYPOINT ["/usr/local/bin/run.sh"]
