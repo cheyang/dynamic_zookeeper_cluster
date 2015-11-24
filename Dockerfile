@@ -6,8 +6,8 @@ RUN wget -q -O - http://apache.arvixe.com/zookeeper/zookeeper-3.5.0-alpha/zookee
     && mkdir -p /tmp/zookeeper
 
 RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
-    && echo "standaloneEnabled=false" >> /opt/zookeeper/conf/zoo.cfg \
-    && echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg 
+    && echo "standaloneEnabled=false" >> /opt/zookeeper/conf/zoo.cfg 
+ #   && echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg 
 
 ADD . /usr/local/bin/
 
