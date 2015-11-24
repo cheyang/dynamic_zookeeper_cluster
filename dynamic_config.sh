@@ -7,7 +7,7 @@ if [ -n "$ZK_URL" ]; then
      echo "server.$MYID=$MYSERVER_URL:observer;$MYCLIENT_PORT" >> ${ZOO_CFG}.dynamic
      cp ${ZOO_CFG}.dynamic ${ZOO_CFG}.dynamic.org 
      echo "${MYID}" > /tmp/zookeeper/myid
-     ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start-foreground
+     ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start
      ${ZOO_DIR}/bin/zkCli.sh -server $ZK_URL reconfig -add "server.$MYID=$MYSERVER_URL:participant;$MYCLIENT_PORT"
      ${ZOO_DIR}/bin/zkServer.sh stop
      ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start-foreground  
