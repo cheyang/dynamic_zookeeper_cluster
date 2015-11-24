@@ -7,5 +7,4 @@ do
      echo ${ADDITIONAL_ZOOKEEPER} >> ${ZOO_CFG} 
 done
 echo "${MYID}" > /tmp/zookeeper/myid
-echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg
 ${ZOO_DIR}/bin/zkServer.sh start-foreground
