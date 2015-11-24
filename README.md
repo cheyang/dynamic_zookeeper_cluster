@@ -32,9 +32,10 @@ Follow the [installation guide] (https://docs.docker.com/installation/) to insta
      --name=zk1  \
     --net=host  \
     -v /data/zk1:/tmp/zookeeper \
-    -e ADDITIONAL_ZOOKEEPER_1=server.1=localhost:2888:3888:participant\;2181 \
-    -e ADDITIONAL_ZOOKEEPER_2=server.2=localhost:2889:3889:participant\;2182 \
-    -e ADDITIONAL_ZOOKEEPER_3=server.3=localhost:2890:3890:participant\;2183 \
+    -e ADDITIONAL_ZOOKEEPER_1=server.1=localhost:2888:3888 \
+    -e ADDITIONAL_ZOOKEEPER_2=server.2=localhost:2889:3889 \
+    -e ADDITIONAL_ZOOKEEPER_3=server.3=localhost:2890:3890 \
+    -e ADDITIONAL_ZOOKEEPER_4=2181 \
     -e CONFIG_MODE=STATIC   \
     -e MYID=1  \
     zookeeper
