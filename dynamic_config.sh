@@ -6,13 +6,13 @@ if [ -n "$ZK_URL" ]; then
      echo "`${ZOO_DIR}/bin/zkCli.sh -server $ZK_URL get /zookeeper/config|grep ^server`" >> ${ZOO_CFG}.dynamic
      echo "server.$MYID=$MYSERVER_URL:observer;$MYCLIENT_PORT" >> ${ZOO_CFG}.dynamic
      cp ${ZOO_CFG}.dynamic ${ZOO_CFG}.dynamic.org 
-     ${ZOO_DIR}/bin/zkServer-initialize.sh --force --myid=$MYID
+     echo "${MYID}" > /tmp/zookeeper/myid
      ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start-foreground
      ${ZOO_DIR}/bin/zkCli.sh -server $ZK_URL reconfig -add "server.$MYID=$MYSERVER_URL:participant;$MYCLIENT_PORT"
      ${ZOO_DIR}/bin/zkServer.sh stop
      ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start-foreground  
 else
      echo "server.$MYID=$MYSERVER_URL:participant;$MYCLIENT_PORT" >> ${ZOO_CFG}.dynamic
-     ${ZOO_DIR}/bin/zkServer-initialize.sh --force --myid=$MYID
+     echo "${MYID}" > /tmp/zookeeper/myid
      ZOO_LOG_DIR=/var/log ZOO_LOG4J_PROP='INFO,CONSOLE,ROLLINGFILE' ${ZOO_DIR}/bin/zkServer.sh start-foreground
 fi
