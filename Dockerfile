@@ -7,7 +7,8 @@ RUN wget -q -O - http://apache.arvixe.com/zookeeper/zookeeper-3.5.1-alpha/zookee
 
 RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
     && echo "standaloneEnabled=false" >> /opt/zookeeper/conf/zoo.cfg  \
-    && echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg 
+    && echo "dynamicConfigFile=/opt/zookeeper/conf/zoo.cfg.dynamic" >> /opt/zookeeper/conf/zoo.cfg \
+    && sed -ri 's/clientPort=2181/#clientPort=2181/g' /opt/zookeeper/conf/zoo.cfg
 
 ADD . /usr/local/bin/
 
